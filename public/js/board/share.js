@@ -1,4 +1,4 @@
-/** Modal de compartilhamento: link, permissão do link e convites por e-mail. */
+/** Modal de compartilhamento: link, permissão do link e convites por nome de usuário. */
 import { state, emit } from './state.js';
 import { api } from '../api.js';
 import { h, initials, toast, copyText } from '../util.js';
@@ -74,23 +74,23 @@ export function openShare() {
       });
       body.append(select, desc);
 
-      body.append(h('div', { class: 'section-title', text: 'Convidar por e-mail' }));
-      const email = h('input', { class: 'input', type: 'email', placeholder: 'email@exemplo.com', required: true });
+      body.append(h('div', { class: 'section-title', text: 'Convidar pessoa' }));
+      const userInput = h('input', { class: 'input', type: 'text', placeholder: 'nome de usuário', autocapitalize: 'none', spellcheck: false, required: true });
       const roleSel = h('select', { class: 'select' }, h('option', { value: 'editor', text: 'Pode editar' }), h('option', { value: 'viewer', text: 'Pode ver' }));
       const form = h('form', {
         class: 'invite-row',
         onsubmit: async (e) => {
           e.preventDefault();
-          if (!email.value.trim()) return;
+          if (!userInput.value.trim()) return;
           try {
-            const res = await api(`/api/boards/${board.id}/members`, { method: 'POST', body: { email: email.value.trim(), role: roleSel.value } });
+            const res = await api(`/api/boards/${board.id}/members`, { method: 'POST', body: { username: userInput.value.trim(), role: roleSel.value } });
             toast('Pessoa adicionada ao quadro.', { type: 'success' });
             render(res.board, role);
           } catch (err) {
             toast(err.message, { type: 'error', timeout: 5000 });
           }
         },
-      }, email, roleSel, h('button', { class: 'btn primary', type: 'submit', text: 'Convidar' }));
+      }, userInput, roleSel, h('button', { class: 'btn primary', type: 'submit', text: 'Convidar' }));
       body.append(form, h('p', { class: 'hint', text: 'A pessoa precisa ter uma conta no Pino. O quadro aparecerá na lista dela.' }));
     } else {
       body.append(h('p', { class: 'hint', text: MODES.find((m) => m.value === board.shareMode).desc }));
@@ -109,7 +109,7 @@ export function openShare() {
     const canRemove = m.role !== 'owner' && (myRole === 'owner' || isMe);
     return h('div', { class: 'member-row' },
       h('span', { class: 'avatar', style: { background: m.color || '#8B95A1' }, text: initials(m.name) }),
-      h('div', { class: 'who' }, h('b', { text: `${m.name}${isMe ? ' (você)' : ''}` }), m.email ? h('span', { text: m.email }) : null),
+      h('div', { class: 'who' }, h('b', { text: `${m.name}${isMe ? ' (você)' : ''}` }), m.username ? h('span', { text: `@${m.username}` }) : null),
       h('span', { class: 'badge', text: label }),
       canRemove
         ? h('button', {

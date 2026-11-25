@@ -49,7 +49,8 @@ A chave nunca vai para o navegador.
 
 ## Funcionalidades
 
-- **Contas:** cadastro e login simples (senha com hash `scrypt`, sessão em cookie `HttpOnly`).
+- **Contas:** cadastro simples com nome, usuário e senha — sem e-mail (senha com hash `scrypt`,
+  sessão em cookie `HttpOnly`).
 - **Tempo real:** todos veem as alterações na hora, com o **cursor de cada pessoa se movendo**
   (com nome e cor), avatares de quem está online, a seleção dos outros destacada e
   "Trazer todos para minha visão".
@@ -62,7 +63,7 @@ A chave nunca vai para o navegador.
   textos, áreas (frames) e borracha.
 - **Timer da equipe:** compartilhado entre todos, com presets, pausa, +1 min, bipes nos últimos
   5 segundos e **alarme sonoro** ao terminar (o alarme é gerado pelo navegador, sem arquivos de áudio).
-- **Compartilhar:** link com permissão (editar / só ver / privado) e convite por e-mail.
+- **Compartilhar:** link com permissão (editar / só ver / privado) e convite por nome de usuário.
 - **Exportar:** PNG em alta resolução, SVG vetorial (quadro inteiro ou só a seleção) e backup
   `.json` com as imagens embutidas. **Importar:** imagens, SVG e backups, por menu, arrastando
   arquivos para o quadro ou colando (Ctrl+V).
