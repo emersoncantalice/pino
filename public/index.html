@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meus quadros · Pino</title>
+  <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/base.css">
+</head>
+<body>
+  <header class="dash-header">
+    <a class="brand" href="/"><img src="/img/logo.svg" alt="">Pino</a>
+    <div class="spacer"></div>
+    <div class="user-chip" id="user-chip"></div>
+    <button class="btn ghost sm" id="logout-btn" type="button">Sair</button>
+  </header>
+
+  <main class="dash">
+    <div class="section-head">
+      <h2>Criar um quadro</h2>
+    </div>
+    <div class="tpl-row" id="tpl-row"></div>
+
+    <div class="section-head">
+      <h2>Seus quadros</h2>
+      <label class="search">
+        <span class="sr" hidden>Buscar quadros</span>
+        <span id="search-icon"></span>
+        <input class="input" id="search" type="search" placeholder="Buscar quadros" autocomplete="off">
+      </label>
+    </div>
+    <div class="board-grid" id="board-grid"></div>
+    <div class="empty-state" id="empty" hidden>
+      <h3>Nenhum quadro ainda</h3>
+      <p>Comece com um quadro em branco ou escolha uma estrutura pronta acima.</p>
+    </div>
+  </main>
+
+  <div id="modal-root"></div>
+  <div id="toast-root"></div>
+  <script type="module" src="/js/dashboard.js"></script>
+</body>
+</html>

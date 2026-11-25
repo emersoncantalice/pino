@@ -1,0 +1,4 @@
+# dados locais e segredos
+data/
+.env
+*.tmp

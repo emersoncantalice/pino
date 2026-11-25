@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Quadro · Pino</title>
+  <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/board.css">
+</head>
+<body class="board-page">
+  <div id="viewport" class="viewport" tabindex="-1">
+    <div id="world" class="world">
+      <div id="items-layer"></div>
+      <div id="draft-layer"></div>
+      <div id="overlay-layer"></div>
+      <div id="cursor-layer"></div>
+    </div>
+    <div id="marquee" class="marquee" hidden></div>
+    <div id="drop-hint" class="drop-hint" hidden>Solte para importar (PNG, JPG, SVG ou backup .json)</div>
+  </div>
+
+  <header class="topbar">
+    <div class="panel tb-group tb-left">
+      <a class="tb-logo" href="/" title="Meus quadros"><img src="/img/logo.svg" alt="Pino" width="28" height="28"></a>
+      <input id="board-name" class="board-name" maxlength="120" spellcheck="false" aria-label="Nome do quadro" autocomplete="off">
+      <button class="icon-btn" id="menu-btn" type="button" aria-label="Exportar e mais opções" title="Exportar e mais opções"></button>
+    </div>
+    <div class="panel tb-group tb-right">
+      <div id="avatars" class="avatars"></div>
+      <button class="icon-btn" id="timer-btn" type="button" aria-label="Timer" title="Timer"></button>
+      <button class="btn primary sm" id="share-btn" type="button"></button>
+    </div>
+  </header>
+
+  <div id="timer-pill" class="timer-pill" hidden></div>
+  <nav id="toolbar" class="toolbar panel" aria-label="Ferramentas"></nav>
+  <div id="ctxbar" class="ctxbar panel" hidden></div>
+  <div id="zoombar" class="zoombar panel"></div>
+  <div class="statusbar">
+    <span id="conn-status" class="chip" hidden></span>
+    <span id="role-badge" class="chip" hidden>Somente visualização</span>
+  </div>
+
+  <div id="board-error" class="board-error" hidden></div>
+  <div id="loading" class="loading-screen"><div class="spinner"></div><span>Abrindo quadro…</span></div>
+  <div id="flash" class="flash"></div>
+  <div id="modal-root"></div>
+  <div id="toast-root"></div>
+
+  <script type="module" src="/js/board/main.js"></script>
+</body>
+</html>
